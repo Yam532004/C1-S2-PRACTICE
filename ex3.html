@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    const PRODUCTS = [
+      { id: 1, name: "Apple", price: 2.5 },
+      { id: 2, name: "Banana", price: 1.5 },
+      { id: 3, name: "Orange", price: 3 },
+      { id: 4, name: "Rice", price: 1.5 },
+      { id: 5, name: "Chocolate", price: 3 },
+    ];
+    const SHOPPING_CART = [
+      { id: 1, quantity: 2 },
+      { id: 3, quantity: 1 },
+    ];
+
+    //Q1
+    function getCartTotalAmount() {
+      let sum = 0;
+      SHOPPING_CART.map((cartItem) => {
+        PRODUCTS.map((productItem) => {
+          if (cartItem.id === productItem.id) {
+            sum += cartItem.quantity * productItem.price;
+          }
+        });
+      });
+      console.log(sum);
+    }
+    getCartTotalAmount();
+
+    // //Q2
+    function addProductToCart(id){
+        itemExists = false
+        SHOPPING_CART.map((cartItem) => {
+            if (cartItem.id === id){
+                cartItem.quantity+=1
+                itemExists = true;
+            }
+        })
+        if(!itemExists){
+            SHOPPING_CART.push({id:id, quantity:1})
+        }
+        console.log(SHOPPING_CART)
+    }
+    addProductToCart(5);
+
+    //Q3
+    function removeProductFromCart(id) {
+      itemExists = false;
+      SHOPPING_CART.map((cartItem) => {
+        if (cartItem.id === id) {
+          if (cartItem.quantity >= 2) {
+            cartItem.quantity += 1;
+            itemExists = true;
+            console.log("quality> 2");
+            console.log(SHOPPING_CART);
+          } else {
+            SHOPPING_CART.splice(cartItem, 1);
+            itemExists = true;
+            console.log("quality< 2");
+            console.log(SHOPPING_CART);
+          }
+        } 
+      });
+      if (!itemExists) {
+        // console.log("Item does not exits");
+        return;
+      }
+    }
+    removeProductFromCart(2);
+  </script>
+</html>

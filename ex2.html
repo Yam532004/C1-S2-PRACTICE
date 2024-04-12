@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+    const STUDENTS_DATA = [
+  { firstName: "An",lastName: "Binh", age: 20, batch: "A" },
+  { firstName: "Bình", lastName: "Cẩm", age: 22, batch: "B" },
+  { firstName: "Cẩm",lastName: "An", age: 21,  batch: "B" },
+  { firstName: "An", lastName: "Pham", age: 19 ,  batch: "A"}, // Duplicate first name !
+];
+
+function updateStudentAge (firstName, lastName, batch, newAge){
+    STUDENTS_DATA.forEach(student =>{
+        if (student.firstName === firstName && student.lastName === lastName && student.batch === batch)
+        {
+            student.age = newAge;
+        }
+    } ) 
+}   
+    console.log("After update")
+    console.log(STUDENTS_DATA)
+    updateStudentAge("An", "Binh", "A", 30);
+
+</script>
+</html>
